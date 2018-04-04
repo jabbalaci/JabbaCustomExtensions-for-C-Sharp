@@ -47,6 +47,24 @@ public class JabbaCustomExtensionsTest
     }
 
     [Fact]
+    public void Times_char()
+    {
+        Assert.Equal("", 'x'.Times(0));
+        Assert.Equal("x", 'x'.Times(1));
+        Assert.Equal("xxx", 'x'.Times(3));
+        Assert.Equal("", 'x'.Times(-2));
+    }
+
+    [Fact]
+    public void Times_string()
+    {
+        Assert.Equal("", "x".Times(0));
+        Assert.Equal("x", "x".Times(1));
+        Assert.Equal("xxx", "x".Times(3));
+        Assert.Equal("", "x".Times(-2));
+    }
+
+    [Fact]
     public void ToInt()
     {
         Assert.Equal(0, "0".ToInt());

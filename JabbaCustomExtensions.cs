@@ -50,6 +50,23 @@ namespace JabbaCustomExtensions
             return s.Substring(start, len);    // Return Substring of length
         }
 
+        public static string Times(this char c, int n)
+        {
+            if (n < 0) return "";
+            // else
+            return new string(c, n);
+        }
+
+        public static string Times(this string s, int n)
+        {
+            var sb = new StringBuilder();
+            for (var i = 0; i < n; ++i)
+            {
+                sb.Append(s);
+            }
+            return sb.ToString();
+        }
+
         // string to int (like Kotlin)
         public static int ToInt(this string s)
         {
