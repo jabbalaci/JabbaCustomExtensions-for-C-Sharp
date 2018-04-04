@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+
 namespace JabbaCustomExtensions
 {
     //Extension methods must be defined in a static class
@@ -112,6 +113,13 @@ namespace JabbaCustomExtensions
         public static IEnumerable<int> RangeIncl(int start, int end)
         {
             return RangeExcl(start, end + 1);
+        }
+
+        // like Python's input()
+        public static string Input(string prompt = "")
+        {
+            Console.Write(prompt);
+            return Console.ReadLine();
         }
     } // end class Py
 
