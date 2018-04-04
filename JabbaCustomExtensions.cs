@@ -20,6 +20,35 @@ namespace JabbaCustomExtensions
             return s.Substring(0, 1).ToUpper() + s.Substring(1).ToLower();
         }
 
+        // reverse a string (in Python: s[::-1])
+        public static string ReverseStr(this string s)
+        {
+            return new string(s.Reverse().ToArray());    // requires Linq
+        }
+
+        /// <summary>
+        /// Get the string slice between the two indexes.
+        /// Inclusive for start index, exclusive for end index.
+        /// </summary>
+        public static string Slice(this string s, int start, int end)
+        {
+            // based on https://www.dotnetperls.com/string-slice
+            if (start < 0)    // support negative indexing
+            {
+                start = s.Length + start;
+            }
+            if (end < 0)    // support negative indexing
+            {
+                end = s.Length + end;
+            }
+            if (end > s.Length)    // if the end value is too high
+            {
+                end = s.Length;
+            }
+            var len = end - start;             // Calculate length
+            return s.Substring(start, len);    // Return Substring of length
+        }
+
         // string to int (like Kotlin)
         public static int ToInt(this string s)
         {
@@ -32,7 +61,7 @@ namespace JabbaCustomExtensions
             return s.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
         }
 
-        // pretty print an enumerable object, e.g. list (like Python)
+        // pretty print an enumerable object, e.g. a list (like Python)
         public static string Pretty<T>(this IEnumerable<T> li)
         {
             var sb = new StringBuilder("[");

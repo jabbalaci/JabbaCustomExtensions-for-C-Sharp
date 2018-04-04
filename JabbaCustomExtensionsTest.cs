@@ -16,6 +16,37 @@ public class JabbaCustomExtensionsTest
     }
 
     [Fact]
+    public void ReverseStr()
+    {
+        Assert.Equal("", "".ReverseStr());
+        Assert.Equal("a", "a".ReverseStr());
+        Assert.Equal("aa", "aa".ReverseStr());
+        Assert.Equal("ba", "ab".ReverseStr());
+        Assert.Equal("dcba", "abcd".ReverseStr());
+    }
+
+    [Fact]
+    public void Slice()
+    {
+        const string s1 = "Fallout: New Vegas";
+        Assert.Equal("Fall", s1.Slice(0, 4));
+        Assert.Equal("out", s1.Slice(4, 7));
+        Assert.Equal("out: New Vega", s1.Slice(4, 17));
+        Assert.Equal("out: New Vegas", s1.Slice(4, 18));
+        Assert.Equal("out: New Vegas", s1.Slice(4, 19));
+        Assert.Equal("out: New Vegas", s1.Slice(4, 30));
+        Assert.Equal("gas", s1.Slice(-3, s1.Length));
+        Assert.Equal("Vegas", s1.Slice(-5, s1.Length));
+        Assert.Equal("Vega", s1.Slice(-5, -1));
+
+        const string s2 = "batman";
+        Assert.Equal("bat", s2.Slice(0, 3));
+        Assert.Equal("man", s2.Slice(3, s2.Length));
+        Assert.Equal("atm", s2.Slice(1, 4));
+        Assert.Equal("man", s2.Slice(-3, s2.Length));
+    }
+
+    [Fact]
     public void ToInt()
     {
         Assert.Equal(0, "0".ToInt());
