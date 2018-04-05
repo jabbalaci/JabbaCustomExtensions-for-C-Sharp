@@ -45,6 +45,14 @@ namespace JabbaCustomExtensions
             Assert.Equal("Vegas", s1.Slice(-5, s1.Length));
             Assert.Equal("Vega", s1.Slice(-5, -1));
             Assert.Equal("", s1.Slice(100, 200));
+            Assert.Equal("", s1.Slice(100, -2));
+            Assert.Equal("as", s1.Slice(-2, 100));
+            Assert.Equal("", s1.Slice(16, 16));
+            Assert.Equal("", s1.Slice(17, 17));
+            Assert.Equal("s", s1.Slice(17, 18));
+            Assert.Equal("", s1.Slice(18, 18));
+            Assert.Equal("", s1.Slice(19, 19));
+            Assert.Equal("as", s1.Slice(16, 25));
 
             const string s2 = "batman";
             Assert.Equal("bat", s2.Slice(0, 3));
@@ -63,6 +71,8 @@ namespace JabbaCustomExtensions
             Assert.Equal(li1, li1.Slice(0, 4).Concat(li1.Slice(4, li1.Count)));
             Assert.Equal(li1, li1.Slice(0, 100));
             Assert.Equal(new List<char>(), li1.Slice(100, 200));
+            Assert.Equal(new List<char>(), li1.Slice(100, -2));
+            Assert.Equal(new List<char> {'f', 'g'}, li1.Slice(-2, 100));
 
             Assert.Equal(new List<char> {'g'}, li1.Slice(-1, li1.Count));
             Assert.Equal(new List<char> {'f', 'g'}, li1.Slice(-2, li1.Count));

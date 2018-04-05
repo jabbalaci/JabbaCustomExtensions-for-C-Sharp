@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace JabbaCsLib
+namespace JabbaCustomExtensions
 {
 
     public static class Euler

@@ -51,6 +51,10 @@ namespace JabbaCustomExtensions
                 end = s.Length;
             }
             var len = end - start;             // Calculate length
+            if (len < 0)
+            {
+                len = 0;
+            }
             return s.Substring(start, len);    // Return Substring of length
         }
 
@@ -74,6 +78,10 @@ namespace JabbaCustomExtensions
                 end = li.Count;
             }
             var count = end - start;             // calculate count (number of elements)
+            if (count < 0)
+            {
+                count = 0;
+            }
             return li.GetRange(start, count);    // return a shallow copy of li of count elements
         }
 
