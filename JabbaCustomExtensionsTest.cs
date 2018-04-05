@@ -26,7 +26,7 @@ public class JabbaCustomExtensionsTest
     }
 
     [Fact]
-    public void Slice()
+    public void Slice_string()
     {
         const string s1 = "Fallout: New Vegas";
         Assert.Equal("Fall", s1.Slice(0, 4));
@@ -38,12 +38,31 @@ public class JabbaCustomExtensionsTest
         Assert.Equal("gas", s1.Slice(-3, s1.Length));
         Assert.Equal("Vegas", s1.Slice(-5, s1.Length));
         Assert.Equal("Vega", s1.Slice(-5, -1));
+        Assert.Equal("", s1.Slice(100, 200));
 
         const string s2 = "batman";
         Assert.Equal("bat", s2.Slice(0, 3));
         Assert.Equal("man", s2.Slice(3, s2.Length));
         Assert.Equal("atm", s2.Slice(1, 4));
         Assert.Equal("man", s2.Slice(-3, s2.Length));
+    }
+
+    [Fact]
+    public void Slice_list()
+    {
+        var li1 = new List<char> {'a', 'b', 'c', 'd', 'e', 'f', 'g'};
+        Assert.Equal(new List<char> {'c', 'd'}, li1.Slice(2, 4));
+        Assert.Equal(new List<char> {'b', 'c', 'd', 'e', 'f', 'g'}, li1.Slice(1, li1.Count));
+        Assert.Equal(new List<char> {'a', 'b', 'c'}, li1.Slice(0, 3));
+        Assert.Equal(li1, li1.Slice(0, 4).Concat(li1.Slice(4, li1.Count)));
+        Assert.Equal(li1, li1.Slice(0, 100));
+        Assert.Equal(new List<char>(), li1.Slice(100, 200));
+
+        Assert.Equal(new List<char> {'g'}, li1.Slice(-1, li1.Count));
+        Assert.Equal(new List<char> {'f', 'g'}, li1.Slice(-2, li1.Count));
+        Assert.Equal(new List<char> {'a', 'b', 'c', 'd', 'e', 'f'}, li1.Slice(0, -1));
+
+        Assert.Equal(new List<char> {'c', 'd', 'e'}, li1.Slice(2, -2));
     }
 
     [Fact]

@@ -42,12 +42,39 @@ namespace JabbaCustomExtensions
             {
                 end = s.Length + end;
             }
+            if (start > s.Length)    // if the start value is too high
+            {
+                start = s.Length;
+            }
             if (end > s.Length)    // if the end value is too high
             {
                 end = s.Length;
             }
             var len = end - start;             // Calculate length
             return s.Substring(start, len);    // Return Substring of length
+        }
+
+        // slice support for lists (like Python)
+        public static List<T> Slice<T>(this List<T> li, int start, int end)
+        {
+            if (start < 0)    // support negative indexing
+            {
+                start = li.Count + start;
+            }
+            if (end < 0)    // support negative indexing
+            {
+                end = li.Count + end;
+            }
+            if (start > li.Count)    // if the start value is too high
+            {
+                start = li.Count;
+            }
+            if (end > li.Count)    // if the end value is too high
+            {
+                end = li.Count;
+            }
+            var count = end - start;             // calculate count (number of elements)
+            return li.GetRange(start, count);    // return a shallow copy of li of count elements
         }
 
         public static string Times(this char c, int n)
@@ -73,7 +100,7 @@ namespace JabbaCustomExtensions
             return int.Parse(s);
         }
 
-        // split by whitespaces and remove empty entries (like Python)
+        // split by whitespaces and remove empty entries (like Python's s.split())
         public static string[] SplitAndRemoveEmptyEntries(this string s)
         {
             return s.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
