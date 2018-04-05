@@ -102,6 +102,16 @@ namespace JabbaCustomExtensions
             return sb.ToString();
         }
 
+        // center a string in a field of given width (like Python's str.center())
+        public static string Center(this string s, int width, char fillChar=' ')
+        {
+            var leftMarginWidth = (width - s.Length) / 2;
+            var rightMarginWidth = width - s.Length - leftMarginWidth;
+            return string.Format("{0}{1}{2}", fillChar.Times(leftMarginWidth),
+                                              s,
+                                              fillChar.Times(rightMarginWidth));
+        }
+
         // string to int (like Kotlin)
         public static int ToInt(this string s)
         {
@@ -170,7 +180,7 @@ namespace JabbaCustomExtensions
         }
 
         // like Python's input()
-        public static string Input(string prompt = "")
+        public static string Input(string prompt="")
         {
             Console.Write(prompt);
             return Console.ReadLine();

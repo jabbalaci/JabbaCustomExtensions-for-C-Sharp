@@ -37,6 +37,8 @@ namespace JabbaCustomExtensions
             const string s1 = "Fallout: New Vegas";
             Assert.Equal("Fall", s1.Slice(0, 4));
             Assert.Equal("out", s1.Slice(4, 7));
+            Assert.Equal("o", s1.Slice(4, 5));
+            Assert.Equal("", s1.Slice(4, 4));
             Assert.Equal("out: New Vega", s1.Slice(4, 17));
             Assert.Equal("out: New Vegas", s1.Slice(4, 18));
             Assert.Equal("out: New Vegas", s1.Slice(4, 19));
@@ -97,6 +99,18 @@ namespace JabbaCustomExtensions
             Assert.Equal("x", "x".Times(1));
             Assert.Equal("xxx", "x".Times(3));
             Assert.Equal("", "x".Times(-2));
+        }
+
+        [Fact]
+        public void Center()
+        {
+            Assert.Equal("    *     ", "*".Center(10));
+            Assert.Equal("....*.....", "*".Center(10, '.'));
+            Assert.Equal("....**....", "**".Center(10, '.'));
+            Assert.Equal("...***....", "***".Center(10, '.'));
+            Assert.Equal("**********", "**********".Center(10, '.'));
+            Assert.Equal("***********", "***********".Center(10, '.'));
+            Assert.Equal(".hello..", "hello".Center(8, '.'));
         }
 
         [Fact]
