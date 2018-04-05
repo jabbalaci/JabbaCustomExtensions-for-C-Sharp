@@ -1,4 +1,7 @@
 .idea
+.vs
+
 bin
 obj
+
 *.sln
