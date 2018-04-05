@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -6,6 +7,10 @@ namespace JabbaCustomExtensions
 {
     public class JabbaCustomExtensionsTest
     {
+        // ################################ //
+        // Tests for class CustomExtensions //
+        // ################################ //
+
         [Fact]
         public void Capitalize()
         {
@@ -138,6 +143,10 @@ namespace JabbaCustomExtensions
             Assert.Equal("[10, 11]", Enumerable.Range(10, 2).Pretty());
         }
 
+        // ################## //
+        // Tests for class Py //
+        // ################## //
+
         [Fact]
         public void Py_RangeExcl()
         {
@@ -155,5 +164,14 @@ namespace JabbaCustomExtensions
             Assert.Equal(new[] {10}, Py.RangeIncl(10, 10).ToArray());
             Assert.Equal(new int[] {}, Py.RangeIncl(10, 6).ToArray());
         }
+
+        [Fact]
+        public void Zip()
+        {
+            int[] numbers = {1, 2, 3, 4};
+            string[] words = {"one", "two", "three"};
+            Assert.Equal(numbers.Zip(words, Tuple.Create), Py.Zip(numbers, words));
+        }
+
     }
 }

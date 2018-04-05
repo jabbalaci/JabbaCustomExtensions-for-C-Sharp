@@ -141,7 +141,9 @@ namespace JabbaCustomExtensions
 
             return sb.Append("]").ToString();
         }
+
     } // end class CustomExtensions
+
 
     public static class Py
     {
@@ -165,6 +167,15 @@ namespace JabbaCustomExtensions
             Console.Write(prompt);
             return Console.ReadLine();
         }
+
+        // Like Python's zip(seq1, seq2). It returns an iterator over tuples.
+        public static IEnumerable<Tuple<TFirst, TSecond>> Zip<TFirst, TSecond>(
+            IEnumerable<TFirst> first,
+            IEnumerable<TSecond> second)
+        {
+            return first.Zip(second, Tuple.Create);
+        }
+
     } // end class Py
 
 }
