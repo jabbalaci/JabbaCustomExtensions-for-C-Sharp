@@ -55,6 +55,7 @@ namespace JabbaCustomExtensions
             Assert.Equal("", s1.Slice(18, 18));
             Assert.Equal("", s1.Slice(19, 19));
             Assert.Equal("as", s1.Slice(16, 25));
+            Assert.Equal(s1.Substring(7), s1.Slice(7, s1.Length));
 
             const string s2 = "batman";
             Assert.Equal("bat", s2.Slice(0, 3));
