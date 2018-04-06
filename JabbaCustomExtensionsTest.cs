@@ -98,6 +98,19 @@ namespace JabbaCustomExtensions
         }
 
         [Fact]
+        public void Slice_list_with_step()
+        {
+            var li1 = new List<char> {'a', 'b', 'c', 'd', 'e', 'f', 'g'};
+            Assert.Equal(li1, li1.Slice(0, li1.Count, 1));
+            Assert.Equal(new List<char> {'a', 'c', 'e', 'g'}, li1.Slice(0, li1.Count, 2));
+            Assert.Equal(new List<char> {'a', 'c', 'e'}, li1.Slice(0, 5, 2));
+
+            Assert.Throws<ArgumentException>(() => li1.Slice(0, 6, 0));
+            Assert.Throws<NotImplementedException>(() => li1.Slice(0, 6, -1));
+            Assert.Throws<NotImplementedException>(() => li1.Slice(0, 6, -2));
+        }
+
+        [Fact]
         public void Times_char()
         {
             Assert.Equal("", 'x'.Times(0));

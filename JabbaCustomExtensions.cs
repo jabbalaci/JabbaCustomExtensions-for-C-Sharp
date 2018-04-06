@@ -70,7 +70,6 @@ namespace JabbaCustomExtensions
         /// every step-th character (like Python).
         /// Inclusive for start index, exclusive for end index.
         /// </summary>
-        /// <param name="input"></param>
         /// <param name="start">Start position (inclusive).</param>
         /// <param name="end">End position (exclusive).</param>
         /// <param name="step">Keep every step-th character (and skip the others).</param>
@@ -92,6 +91,7 @@ namespace JabbaCustomExtensions
         /// Get the list slice between the two indexes (like Python).
         /// Inclusive for start index, exclusive for end index.
         /// </summary>
+        /// <returns>A shallow copy of a list slice.</returns>
         public static List<T> Slice<T>(this List<T> li, int start, int end)
         {
             if (start < 0)    // support negative indexing
@@ -116,6 +116,29 @@ namespace JabbaCustomExtensions
                 count = 0;
             }
             return li.GetRange(start, count);    // return a shallow copy of li of count elements
+        }
+
+        /// <summary>
+        /// Get the list slice between the two indexes and keep only
+        /// every step-th character (like Python).
+        /// Inclusive for start index, exclusive for end index.
+        /// </summary>
+        /// <param name="start">Start position (inclusive).</param>
+        /// <param name="end">End position (exclusive).</param>
+        /// <param name="step">Keep every step-th element (and skip the others).</param>
+        /// <returns>A shallow copy of a list slice.</returns>
+        public static List<T> Slice<T>(this List<T> input, int start, int end, int step)
+        {
+            if (step == 0)
+            {
+                throw new ArgumentException("slice step cannot be zero");
+            }
+            if (step < 0)
+            {
+                throw new NotImplementedException("slice step must be >= 1");
+            }
+            var li = Slice(input, start, end);
+            return li.Where((c, i) => i % step == 0).ToList();
         }
 
         /// <summary>
