@@ -65,6 +65,19 @@ namespace JabbaCustomExtensions
         }
 
         [Fact]
+        public void Slice_string_with_step()
+        {
+            const string s1 = "python programming";
+            Assert.Equal(s1, s1.Slice(0, s1.Length, 1));
+            Assert.Equal("pto rgamn", s1.Slice(0, s1.Length, 2));
+            Assert.Equal("pto", s1.Slice(0, 6, 2));
+
+            Assert.Throws<ArgumentException>(() => s1.Slice(0, 6, 0));
+            Assert.Throws<NotImplementedException>(() => s1.Slice(0, 6, -1));
+            Assert.Throws<NotImplementedException>(() => s1.Slice(0, 6, -2));
+        }
+
+        [Fact]
         public void Slice_list()
         {
             var li1 = new List<char> {'a', 'b', 'c', 'd', 'e', 'f', 'g'};

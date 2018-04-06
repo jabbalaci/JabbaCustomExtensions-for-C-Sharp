@@ -66,6 +66,29 @@ namespace JabbaCustomExtensions
         }
 
         /// <summary>
+        /// Get the string slice between the two indexes and keep only
+        /// every step-th character (like Python).
+        /// Inclusive for start index, exclusive for end index.
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="start">Start position (inclusive).</param>
+        /// <param name="end">End position (exclusive).</param>
+        /// <param name="step">Keep every step-th character (and skip the others).</param>
+        public static string Slice(this string input, int start, int end, int step)
+        {
+            if (step == 0)
+            {
+                throw new ArgumentException("slice step cannot be zero");
+            }
+            if (step < 0)
+            {
+                throw new NotImplementedException("slice step must be >= 1");
+            }
+            var s = Slice(input, start, end);
+            return string.Join("", s.Where((c, i) => i % step == 0));
+        }
+
+        /// <summary>
         /// Get the list slice between the two indexes (like Python).
         /// Inclusive for start index, exclusive for end index.
         /// </summary>
