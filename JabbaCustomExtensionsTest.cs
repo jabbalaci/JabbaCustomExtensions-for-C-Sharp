@@ -128,17 +128,17 @@ namespace JabbaCustomExtensions
             Assert.Equal("", "x".Times(-2));
         }
 
-[Fact]
-public void Center()
-{
-    Assert.Equal("    *     ", "*".Center(10));
-    Assert.Equal("....*.....", "*".Center(10, '.'));
-    Assert.Equal("....**....", "**".Center(10, '.'));
-    Assert.Equal("...***....", "***".Center(10, '.'));
-    Assert.Equal("**********", "**********".Center(10, '.'));
-    Assert.Equal("***********", "***********".Center(10, '.'));
-    Assert.Equal(".hello..", "hello".Center(8, '.'));
-}
+        [Fact]
+        public void Center()
+        {
+            Assert.Equal("    *     ", "*".Center(10));
+            Assert.Equal("....*.....", "*".Center(10, '.'));
+            Assert.Equal("....**....", "**".Center(10, '.'));
+            Assert.Equal("...***....", "***".Center(10, '.'));
+            Assert.Equal("**********", "**********".Center(10, '.'));
+            Assert.Equal("***********", "***********".Center(10, '.'));
+            Assert.Equal(".hello..", "hello".Center(8, '.'));
+        }
 
         [Fact]
         public void ToInt()
