@@ -244,11 +244,28 @@ namespace JabbaCustomExtensions
         }
 
         [Fact]
-        public void Py_Zip()
+        public void Py_Zip_with_2_parameters()
         {
             int[] numbers = {1, 2, 3, 4};
             string[] words = {"one", "two", "three"};
             Assert.Equal(numbers.Zip(words, Tuple.Create), Py.Zip(numbers, words));
+        }
+
+        [Fact]
+        public void Py_Zip_with_3_parameters()
+        {
+            int[] numbers = {1, 2, 3, 4};
+            string[] words = {"one", "two", "three"};
+            char[] chars = { 'a', 'b', 'c', 'd', 'e', 'f' };
+
+            var got = Py.Zip(numbers, words, chars).ToList();
+            var expected = new List<Tuple<int, string, char>>
+            {
+                Tuple.Create(1, "one", 'a'),
+                Tuple.Create(2, "two", 'b'),
+                Tuple.Create(3, "three", 'c')
+            };
+            Assert.Equal(expected, got);
         }
 
     } // end class PyTest

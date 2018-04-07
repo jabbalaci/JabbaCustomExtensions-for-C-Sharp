@@ -278,6 +278,9 @@ namespace JabbaCustomExtensions
             return Console.ReadLine();
         }
 
+        // TODO: write just one Zip() method that can take 2 or more parameters
+        //       and zips them up (like Python's zip()).
+
         /// <summary>
         /// Zip the first and second parameters (like Python's zip(seq1, seq2)).
         /// </summary>
@@ -290,7 +293,25 @@ namespace JabbaCustomExtensions
         /// </returns>
         public static IEnumerable<Tuple<TFirst, TSecond>> Zip<TFirst, TSecond>(
             IEnumerable<TFirst> first,
-            IEnumerable<TSecond> second) => first.Zip(second, Tuple.Create);
+            IEnumerable<TSecond> second)
+        {
+             return first.Zip(second, Tuple.Create);
+        }
+
+        /// <summary>
+        /// Zip the first, second and third parameters (like Python's zip(seq1, seq2, seq3)).
+        /// </summary>
+        /// <returns>An iterator that aggregates elements from the three parameters.
+        /// The elements are grouped in tuples.
+        /// </returns>
+        public static IEnumerable<Tuple<TFirst, TSecond, TThird>> Zip<TFirst, TSecond, TThird>(
+            IEnumerable<TFirst> first,
+            IEnumerable<TSecond> second,
+            IEnumerable<TThird> third)
+        {
+            return first.Zip(second, (a, b) => (a, b))
+                .Zip(third, (t, c) => Tuple.Create(t.Item1, t.Item2, c));
+        }
 
     } // end class Py
 
