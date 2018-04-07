@@ -27,10 +27,8 @@ namespace JabbaCustomExtensions
         /// <summary>
         /// Reverse a string (like Python's s[::-1]).
         /// </summary>
-        public static string ReverseStr(this string s)
-        {
-            return new string(s.Reverse().ToArray());    // requires Linq
-        }
+        public static string ReverseStr(this string s) =>
+            new string(s.Reverse().ToArray());    // requires Linq
 
         /// <summary>
         /// Get the string slice between the two indexes (like Python).
@@ -112,20 +110,15 @@ namespace JabbaCustomExtensions
         /// <summary>
         /// Convert the string to int (like Kotlin).
         /// </summary>
-        public static int ToInt(this string s)
-        {
-            return int.Parse(s);
-        }
+        public static int ToInt(this string s) => int.Parse(s);
 
         /// <summary>
         /// Split the string by whitespaces and remove the empty entries (like Python's s.split()).
         /// </summary>
         /// <param name="s"></param>
         /// <returns>An array of strings containing non-empty parts.</returns>
-        public static string[] SplitAndRemoveEmptyEntries(this string s)
-        {
-            return s.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
-        }
+        public static string[] SplitAndRemoveEmptyEntries(this string s) =>
+            s.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
 
     } // end class StringExtensions
 
@@ -265,20 +258,14 @@ namespace JabbaCustomExtensions
         /// <summary>
         /// Make a range over [start..end) , where end is NOT included (exclusive).
         /// </summary>
-        public static IEnumerable<int> RangeExcl(int start, int end)
-        {
-            if (end <= start) return Enumerable.Empty<int>();
-            // else
-            return Enumerable.Range(start, end - start);
-        }
+        public static IEnumerable<int> RangeExcl(int start, int end) =>
+            end <= start ? Enumerable.Empty<int>() : Enumerable.Range(start, end - start);
 
         /// <summary>
         /// Make a range over [start..end] , where end IS included (inclusive).
         /// </summary>
-        public static IEnumerable<int> RangeIncl(int start, int end)
-        {
-            return RangeExcl(start, end + 1);
-        }
+        public static IEnumerable<int> RangeIncl(int start, int end) =>
+            RangeExcl(start, end + 1);
 
         /// <summary>
         /// Read a line from the stdin (like Python's input()).
@@ -298,13 +285,12 @@ namespace JabbaCustomExtensions
         /// <typeparam name="TSecond">The second enumerable object.</typeparam>
         /// <param name="first"></param>
         /// <param name="second"></param>
-        /// <returns>An iterator that aggregates elements from the two parameters. The elements are grouped in tuples.</returns>
+        /// <returns>An iterator that aggregates elements from the two parameters.
+        /// The elements are grouped in tuples.
+        /// </returns>
         public static IEnumerable<Tuple<TFirst, TSecond>> Zip<TFirst, TSecond>(
             IEnumerable<TFirst> first,
-            IEnumerable<TSecond> second)
-        {
-            return first.Zip(second, Tuple.Create);
-        }
+            IEnumerable<TSecond> second) => first.Zip(second, Tuple.Create);
 
     } // end class Py
 
