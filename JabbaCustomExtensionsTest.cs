@@ -113,9 +113,9 @@ namespace JabbaCustomExtensions
         public void SplitAndRemoveEmptyEntries()
         {
             const string s1 = "aa bb cc dd";
-            Assert.Equal(new[] {"aa", "bb", "cc", "dd"}, s1.SplitAndRemoveEmptyEntries());
+            Assert.Equal(new[] { "aa", "bb", "cc", "dd" }, s1.SplitAndRemoveEmptyEntries());
             const string s2 = "aa";
-            Assert.Equal(new[] {"aa"}, s2.SplitAndRemoveEmptyEntries());
+            Assert.Equal(new[] { "aa" }, s2.SplitAndRemoveEmptyEntries());
             const string s3 = "";
             Assert.Equal(new string[] {}, s3.SplitAndRemoveEmptyEntries());
             const string s4 = "   aa     bb    \t    cc        dd\n    ";
@@ -133,30 +133,30 @@ namespace JabbaCustomExtensions
         [Fact]
         public void Slice_list()
         {
-            var li1 = new List<char> {'a', 'b', 'c', 'd', 'e', 'f', 'g'};
-            Assert.Equal(new List<char> {'c', 'd'}, li1.Slice(2, 4));
-            Assert.Equal(new List<char> {'b', 'c', 'd', 'e', 'f', 'g'}, li1.Slice(1, li1.Count));
-            Assert.Equal(new List<char> {'a', 'b', 'c'}, li1.Slice(0, 3));
+            var li1 = new List<char> { 'a', 'b', 'c', 'd', 'e', 'f', 'g' };
+            Assert.Equal(new List<char> { 'c', 'd' }, li1.Slice(2, 4));
+            Assert.Equal(new List<char> { 'b', 'c', 'd', 'e', 'f', 'g' }, li1.Slice(1, li1.Count));
+            Assert.Equal(new List<char> { 'a', 'b', 'c' }, li1.Slice(0, 3));
             Assert.Equal(li1, li1.Slice(0, 4).Concat(li1.Slice(4, li1.Count)));
             Assert.Equal(li1, li1.Slice(0, 100));
             Assert.Equal(new List<char>(), li1.Slice(100, 200));
             Assert.Equal(new List<char>(), li1.Slice(100, -2));
-            Assert.Equal(new List<char> {'f', 'g'}, li1.Slice(-2, 100));
+            Assert.Equal(new List<char> { 'f', 'g' }, li1.Slice(-2, 100));
 
-            Assert.Equal(new List<char> {'g'}, li1.Slice(-1, li1.Count));
-            Assert.Equal(new List<char> {'f', 'g'}, li1.Slice(-2, li1.Count));
-            Assert.Equal(new List<char> {'a', 'b', 'c', 'd', 'e', 'f'}, li1.Slice(0, -1));
+            Assert.Equal(new List<char> { 'g' }, li1.Slice(-1, li1.Count));
+            Assert.Equal(new List<char> { 'f', 'g' }, li1.Slice(-2, li1.Count));
+            Assert.Equal(new List<char> { 'a', 'b', 'c', 'd', 'e', 'f' }, li1.Slice(0, -1));
 
-            Assert.Equal(new List<char> {'c', 'd', 'e'}, li1.Slice(2, -2));
+            Assert.Equal(new List<char> { 'c', 'd', 'e' }, li1.Slice(2, -2));
         }
 
         [Fact]
         public void Slice_list_with_step()
         {
-            var li1 = new List<char> {'a', 'b', 'c', 'd', 'e', 'f', 'g'};
+            var li1 = new List<char> { 'a', 'b', 'c', 'd', 'e', 'f', 'g' };
             Assert.Equal(li1, li1.Slice(0, li1.Count, 1));
-            Assert.Equal(new List<char> {'a', 'c', 'e', 'g'}, li1.Slice(0, li1.Count, 2));
-            Assert.Equal(new List<char> {'a', 'c', 'e'}, li1.Slice(0, 5, 2));
+            Assert.Equal(new List<char> { 'a', 'c', 'e', 'g' }, li1.Slice(0, li1.Count, 2));
+            Assert.Equal(new List<char> { 'a', 'c', 'e' }, li1.Slice(0, 5, 2));
 
             Assert.Throws<ArgumentException>(() => li1.Slice(0, 6, 0));
             Assert.Throws<NotImplementedException>(() => li1.Slice(0, 6, -1));
@@ -194,22 +194,22 @@ namespace JabbaCustomExtensions
             var seq1 = new List<int>();
             Assert.Equal("[]", seq1.Pretty());
 
-            var seq2 = new List<int>(){1};
+            var seq2 = new List<int>() { 1 };
             Assert.Equal("[1]", seq2.Pretty());
 
-            var seq3 = new List<int>(){1, 5, 8};
+            var seq3 = new List<int>() { 1, 5, 8 };
             Assert.Equal("[1, 5, 8]", seq3.Pretty());
 
-            var seq4 = new List<string>(){"aa"};
+            var seq4 = new List<string>() { "aa" };
             Assert.Equal("[\"aa\"]", seq4.Pretty());
 
-            var seq5 = new List<string>(){"aa", "bb"};
+            var seq5 = new List<string>() { "aa", "bb" };
             Assert.Equal("[\"aa\", \"bb\"]", seq5.Pretty());
 
-            var seq6 = new List<char>(){'a'};
+            var seq6 = new List<char>() { 'a' };
             Assert.Equal("['a']", seq6.Pretty());
 
-            var seq7 = new List<char>(){'a', 'b'};
+            var seq7 = new List<char>() { 'a', 'b' };
             Assert.Equal("['a', 'b']", seq7.Pretty());
             //
             Assert.Equal("[1]", Enumerable.Range(1, 1).Pretty());
@@ -246,16 +246,16 @@ namespace JabbaCustomExtensions
         [Fact]
         public void Py_Zip_with_2_parameters()
         {
-            int[] numbers = {1, 2, 3, 4};
-            string[] words = {"one", "two", "three"};
+            int[] numbers = { 1, 2, 3, 4 };
+            string[] words = { "one", "two", "three" };
             Assert.Equal(numbers.Zip(words, Tuple.Create), Py.Zip(numbers, words));
         }
 
         [Fact]
         public void Py_Zip_with_3_parameters()
         {
-            int[] numbers = {1, 2, 3, 4};
-            string[] words = {"one", "two", "three"};
+            int[] numbers = { 1, 2, 3, 4 };
+            string[] words = { "one", "two", "three" };
             char[] chars = { 'a', 'b', 'c', 'd', 'e', 'f' };
 
             var got = Py.Zip(numbers, words, chars).ToList();
