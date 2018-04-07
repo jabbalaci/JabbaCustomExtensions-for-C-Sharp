@@ -1,7 +1,8 @@
 ﻿using System;
+using JabbaCustomExtensions;
 using Xunit;
 
-namespace JabbaCustomExtensions
+namespace JabbaCustomExtensionsTest
 {
     /// <summary>
     /// Tests for string extensions.

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using JabbaCustomExtensions;
 using Xunit;
 
-namespace JabbaCustomExtensions
+namespace JabbaCustomExtensionsTest
 {
     /// <summary>
     /// Tests for list extensions.

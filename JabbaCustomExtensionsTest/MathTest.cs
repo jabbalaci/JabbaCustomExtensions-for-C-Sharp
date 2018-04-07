@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+using JabbaCustomExtensions;
 using Xunit;
 
-namespace JabbaCustomExtensions
+namespace JabbaCustomExtensionsTest
 {
     public class MathTest
     {
