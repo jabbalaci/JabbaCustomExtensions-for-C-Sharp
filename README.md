@@ -3,8 +3,7 @@ Jabba's Custom Extensions for C#
 
 My own extensions for C#. Inspired by Python, Kotlin, etc.
 
-See the [test file](JabbaCustomExtensionsTest.cs) for examples.
-I put here some examples as an appetizer.
+Let's see some examples as an appetizer.
 
 String methods
 --------------
@@ -91,7 +90,7 @@ csi> li1.Slice(2, -2));
 {'c', 'd', 'e'}
 
 csi> li1.Slice(0, 5, 2));
-{'a', 'c', 'e'} 
+{'a', 'c', 'e'}
 ```
 
 Pretty print
@@ -147,4 +146,4 @@ csi> Py.Zip(numbers, words, chars);
 
 ----------
 
-The list is not complete. See also the [source](JabbaCustomExtensions.cs) and the [tests](JabbaCustomExtensionsTest.cs). 
+The list is not complete. See also the [source](JabbaCustomExtensions) and the [tests](JabbaCustomExtensionsTest).
