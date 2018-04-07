@@ -147,3 +147,22 @@ csi> Py.Zip(numbers, words, chars);
 ----------
 
 The list is not complete. See also the [source](JabbaCustomExtensions) and the [tests](JabbaCustomExtensionsTest).
+
+How to use it?
+--------------
+
+```cs
+using static System.Console;
+using JabbaCustomExtensions;    // "import" it
+
+namespace Hello
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            WriteLine("hello".Capitalize());    // and then you can use it
+        }
+    }
+}
+```
