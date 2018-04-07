@@ -27,7 +27,7 @@ String slicing, supporting negative indexing and step
 ```cs
 csi> var s1 = "Fallout: New Vegas";
 
-csi> s1.Slice(0, 4));
+csi> s1.Slice(0, 4);
 "Fall"
 csi> s1.Slice(4, 7);
 "out"
@@ -82,14 +82,14 @@ List methods
 List slicing, supporting negative indexing and step
 
 ```cs
-csi> var li1 = new List<char> {'a', 'b', 'c', 'd', 'e', 'f', 'g'};
+csi> var li1 = new List<char> { 'a', 'b', 'c', 'd', 'e', 'f', 'g' };
 
 csi> li1.Slice(2, 4);
 {'c', 'd'}    // list of chars
-csi> li1.Slice(2, -2));
+csi> li1.Slice(2, -2);
 {'c', 'd', 'e'}
 
-csi> li1.Slice(0, 5, 2));
+csi> li1.Slice(0, 5, 2);
 {'a', 'c', 'e'}
 ```
 
