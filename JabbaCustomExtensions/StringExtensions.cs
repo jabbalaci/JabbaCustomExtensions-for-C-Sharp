@@ -95,16 +95,13 @@ namespace JabbaCustomExtensions
         /// <returns>The centered string.</returns>
         public static string Center(this string s, int width, char fillChar=' ')
         {
+            if (s.Length >= width)
+            {
+                return s;
+            }
+            // else
             var leftMarginWidth = (width - s.Length) / 2;
-            if (leftMarginWidth < 0)
-            {
-                leftMarginWidth = 0;
-            }
             var rightMarginWidth = width - s.Length - leftMarginWidth;
-            if (rightMarginWidth < 0)
-            {
-                rightMarginWidth = 0;
-            }
             // char.Times() is not used to avoid dependency
             return string.Format("{0}{1}{2}", new string(fillChar, leftMarginWidth),
                                               s,
