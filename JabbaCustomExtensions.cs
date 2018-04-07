@@ -89,12 +89,8 @@ namespace JabbaCustomExtensions
         /// Take the string n times and concatenate them together to a string.
         /// Like in Python: `"-" * 20`.
         /// </summary>
-        public static string Times(this string s, int n)
-        {
-            if (n < 0) return "";
-            // else
-            return string.Concat(Enumerable.Repeat(s, n));
-        }
+        public static string Times(this string s, int n) =>
+            n < 0 ? string.Empty : string.Concat(Enumerable.Repeat(s, n));
 
         /// <summary>
         /// Center a string in a field of given width (like Python's str.center()).
@@ -143,12 +139,8 @@ namespace JabbaCustomExtensions
         /// Take the character n times and concatenate them together to a string.
         /// Like in Python: `'-' * 20`.
         /// </summary>
-        public static string Times(this char c, int n)
-        {
-            if (n < 0) return "";
-            // else
-            return new string(c, n);
-        }
+        public static string Times(this char c, int n) =>
+            n < 0 ? string.Empty : new string(c, n);
 
     } // end class CharExtensions
 
