@@ -3,21 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
+/*
+ * My own extension methods.
+ * Extension methods must be defined in a static class.
+ */
 namespace JabbaCustomExtensions
 {
     /// <summary>
-    /// My own extension methods.
-    /// Extension methods must be defined in a static class.
+    /// My own string extensions.
     /// </summary>
-    public static class CustomExtensions
+    public static class StringExtensions
     {
-        // This is the extension method.
-        // The first parameter takes the "this" modifier
-        // and specifies the type for which the method is defined.
-
         /// <summary>
-        /// Capitalize the string (like Python).
+        /// Capitalize the string (like Python's s.capitalize()).
         /// </summary>
         public static string Capitalize(this string s)
         {
@@ -27,7 +25,7 @@ namespace JabbaCustomExtensions
         }
 
         /// <summary>
-        /// Reverse a string (like in Python: s[::-1]).
+        /// Reverse a string (like Python's s[::-1]).
         /// </summary>
         public static string ReverseStr(this string s)
         {
@@ -88,6 +86,82 @@ namespace JabbaCustomExtensions
         }
 
         /// <summary>
+        /// Take the string n times and concatenate them together to a string.
+        /// Like in Python: `"-" * 20`.
+        /// </summary>
+        public static string Times(this string s, int n)
+        {
+            var sb = new StringBuilder();
+            for (var i = 0; i < n; ++i)
+            {
+                sb.Append(s);
+            }
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Center a string in a field of given width (like Python's str.center()).
+        /// The string is never truncated.
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="width">The returned string is at least this wide.</param>
+        /// <param name="fillChar">Pad the string with this character (default: space).</param>
+        /// <returns>The centered string.</returns>
+        public static string Center(this string s, int width, char fillChar=' ')
+        {
+            var leftMarginWidth = (width - s.Length) / 2;
+            var rightMarginWidth = width - s.Length - leftMarginWidth;
+            return string.Format("{0}{1}{2}", fillChar.Times(leftMarginWidth),
+                                              s,
+                                              fillChar.Times(rightMarginWidth));
+        }
+
+        /// <summary>
+        /// Convert the string to int (like Kotlin).
+        /// </summary>
+        public static int ToInt(this string s)
+        {
+            return int.Parse(s);
+        }
+
+        /// <summary>
+        /// Split the string by whitespaces and remove the empty entries (like Python's s.split()).
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns>An array of strings containing non-empty parts.</returns>
+        public static string[] SplitAndRemoveEmptyEntries(this string s)
+        {
+            return s.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+        }
+
+    } // end class StringExtensions
+
+
+    /// <summary>
+    /// My own char extensions.
+    /// </summary>
+    public static class CharExtensions
+    {
+        /// <summary>
+        /// Take the character n times and concatenate them together to a string.
+        /// Like in Python: `'-' * 20`.
+        /// </summary>
+        public static string Times(this char c, int n)
+        {
+            if (n < 0) return "";
+            // else
+            return new string(c, n);
+        }
+
+    } // end class CharExtensions
+
+
+    /// <summary>
+    /// My own list extensions.
+    /// </summary>
+    public static class ListExtensions
+    {
+        /// <summary>
         /// Get the list slice between the two indexes (like Python).
         /// Inclusive for start index, exclusive for end index.
         /// </summary>
@@ -141,66 +215,14 @@ namespace JabbaCustomExtensions
             return li.Where((c, i) => i % step == 0).ToList();
         }
 
-        /// <summary>
-        /// Take the character n times and concatenate them together to a string.
-        /// Like in Python: `'-' * 20`.
-        /// </summary>
-        public static string Times(this char c, int n)
-        {
-            if (n < 0) return "";
-            // else
-            return new string(c, n);
-        }
+    } // end class ListExtensions
 
-        /// <summary>
-        /// Take the string n times and concatenate them together to a string.
-        /// Like in Python: `"-" * 20`.
-        /// </summary>
-        public static string Times(this string s, int n)
-        {
-            var sb = new StringBuilder();
-            for (var i = 0; i < n; ++i)
-            {
-                sb.Append(s);
-            }
-            return sb.ToString();
-        }
 
-        /// <summary>
-        /// Center a string in a field of given width (like Python's str.center()).
-        /// The string is never truncated.
-        /// </summary>
-        /// <param name="s"></param>
-        /// <param name="width">The returned string is at least this wide.</param>
-        /// <param name="fillChar">Pad the string with this character (default: space).</param>
-        /// <returns>The centered string.</returns>
-        public static string Center(this string s, int width, char fillChar=' ')
-        {
-            var leftMarginWidth = (width - s.Length) / 2;
-            var rightMarginWidth = width - s.Length - leftMarginWidth;
-            return string.Format("{0}{1}{2}", fillChar.Times(leftMarginWidth),
-                                              s,
-                                              fillChar.Times(rightMarginWidth));
-        }
-
-        /// <summary>
-        /// Convert the string to int (like Kotlin).
-        /// </summary>
-        public static int ToInt(this string s)
-        {
-            return int.Parse(s);
-        }
-
-        /// <summary>
-        /// Split the string by whitespaces and remove the empty entries (like Python's s.split()).
-        /// </summary>
-        /// <param name="s"></param>
-        /// <returns>An array of strings containing non-empty parts.</returns>
-        public static string[] SplitAndRemoveEmptyEntries(this string s)
-        {
-            return s.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
-        }
-
+    /// <summary>
+    /// My own enumerable extensions.
+    /// </summary>
+    public static class EnumerableExtensions
+    {
         /// <summary>
         /// Pretty print an enumerable object, e.g. a list (like Python).
         /// Characters are between apostrophes, strings are between quotes.
@@ -242,10 +264,11 @@ namespace JabbaCustomExtensions
             return sb.Append("]").ToString();
         }
 
-    } // end class CustomExtensions
+    } // end class EnumerableExtensions
+
 
     /// <summary>
-    /// Features similar to the Python programming language.
+    /// Collecting features similar to the Python programming language.
     /// It contains implementations of Python built-in methods for instance.
     /// </summary>
     public static class Py
