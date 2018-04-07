@@ -82,7 +82,7 @@ namespace JabbaCustomExtensions
                 throw new NotImplementedException("slice step must be >= 1");
             }
             var s = Slice(input, start, end);
-            return string.Join("", s.Where((c, i) => i % step == 0));
+            return string.Concat(s.Where((c, i) => i % step == 0));
         }
 
         /// <summary>
@@ -91,12 +91,9 @@ namespace JabbaCustomExtensions
         /// </summary>
         public static string Times(this string s, int n)
         {
-            var sb = new StringBuilder();
-            for (var i = 0; i < n; ++i)
-            {
-                sb.Append(s);
-            }
-            return sb.ToString();
+            if (n < 0) return "";
+            // else
+            return string.Concat(Enumerable.Repeat(s, n));
         }
 
         /// <summary>
