@@ -146,7 +146,7 @@ csi> Py.Zip(numbers, words, chars);
 
 ----------
 
-The list is not complete. See also the [source](JabbaCustomExtensions) and the [tests](JabbaCustomExtensionsTest).
+The list is not complete. See also the [sources](JabbaCustomExtensions) and the [tests](JabbaCustomExtensionsTest).
 
 How to use it?
 --------------
