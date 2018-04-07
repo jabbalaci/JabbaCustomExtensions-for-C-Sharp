@@ -33,6 +33,7 @@ namespace JabbaCustomExtensions
 
             return li;
         }
-    }
+
+    } // end class Euler
 
 }

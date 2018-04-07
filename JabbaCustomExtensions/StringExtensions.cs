@@ -1,0 +1,120 @@
+﻿using System;
+using System.Linq;
+
+namespace JabbaCustomExtensions
+{
+    /// <summary>
+    /// My own string extensions.
+    /// </summary>
+    public static class StringExtensions
+    {
+        /// <summary>
+        /// Capitalize the string (like Python's s.capitalize()).
+        /// Example: "hEllO".Capitalize() -> "Hello".
+        /// </summary>
+        public static string Capitalize(this string s)
+        {
+            if (string.IsNullOrEmpty(s)) return s;
+            // else
+            return s.Substring(0, 1).ToUpper() + s.Substring(1).ToLower();
+        }
+
+        /// <summary>
+        /// Reverse a string (like Python's s[::-1]).
+        /// </summary>
+        public static string ReverseStr(this string s) =>
+            new string(s.Reverse().ToArray());    // requires Linq
+
+        /// <summary>
+        /// Get the string slice between the two indexes (like Python).
+        /// Inclusive for start index, exclusive for end index.
+        /// </summary>
+        public static string Slice(this string s, int start, int end)
+        {
+            // based on https://www.dotnetperls.com/string-slice
+            if (start < 0)    // support negative indexing
+            {
+                start = s.Length + start;
+            }
+            if (end < 0)    // support negative indexing
+            {
+                end = s.Length + end;
+            }
+            if (start > s.Length)    // if the start value is too high
+            {
+                start = s.Length;
+            }
+            if (end > s.Length)    // if the end value is too high
+            {
+                end = s.Length;
+            }
+            var len = end - start;             // Calculate length
+            if (len < 0)
+            {
+                len = 0;
+            }
+            return s.Substring(start, len);    // Return Substring of length
+        }
+
+        /// <summary>
+        /// Get the string slice between the two indexes and keep only
+        /// every step-th character (like Python).
+        /// Inclusive for start index, exclusive for end index.
+        /// </summary>
+        /// <param name="start">Start position (inclusive).</param>
+        /// <param name="end">End position (exclusive).</param>
+        /// <param name="step">Keep every step-th character (and skip the others).</param>
+        public static string Slice(this string input, int start, int end, int step)
+        {
+            if (step == 0)
+            {
+                throw new ArgumentException("slice step cannot be zero");
+            }
+            if (step < 0)
+            {
+                throw new NotImplementedException("slice step must be >= 1");
+            }
+            var s = Slice(input, start, end);
+            return string.Concat(s.Where((c, i) => i % step == 0));
+        }
+
+        /// <summary>
+        /// Take the string n times and concatenate them together to a string.
+        /// Like in Python: `"-" * 20`.
+        /// </summary>
+        public static string Times(this string s, int n) =>
+            n < 0 ? string.Empty : string.Concat(Enumerable.Repeat(s, n));
+
+        /// <summary>
+        /// Center a string in a field of given width (like Python's str.center()).
+        /// The string is never truncated.
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="width">The returned string is at least this wide.</param>
+        /// <param name="fillChar">Pad the string with this character (default: space).</param>
+        /// <returns>The centered string.</returns>
+        public static string Center(this string s, int width, char fillChar=' ')
+        {
+            var leftMarginWidth = (width - s.Length) / 2;
+            var rightMarginWidth = width - s.Length - leftMarginWidth;
+            return string.Format("{0}{1}{2}", fillChar.Times(leftMarginWidth),
+                                              s,
+                                              fillChar.Times(rightMarginWidth));
+        }
+
+        /// <summary>
+        /// Convert the string to int (like Kotlin).
+        /// </summary>
+        public static int ToInt(this string s) => int.Parse(s);
+
+        /// <summary>
+        /// Split the string by whitespaces and remove the empty entries (like Python's s.split()).
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns>An array of strings containing non-empty parts.</returns>
+        public static string[] SplitAndRemoveEmptyEntries(this string s) =>
+            s.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+
+    } // end class StringExtensions
+
+}

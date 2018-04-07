@@ -14,5 +14,6 @@ namespace JabbaCustomExtensions
             Assert.Equal(new List<int> {1, 2, 17, 34}, Euler.Divisors(34));
         }
 
-    }
+    } // end class MathTest
+
 }
