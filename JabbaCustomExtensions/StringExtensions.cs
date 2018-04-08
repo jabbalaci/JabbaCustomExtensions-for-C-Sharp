@@ -14,7 +14,9 @@ namespace JabbaCustomExtensions
         /// </summary>
         public static string Capitalize(this string s)
         {
-            if (string.IsNullOrEmpty(s)) return s;
+            if (s == null) throw new ArgumentNullException(nameof (s));    // if null
+            // else
+            if (string.IsNullOrEmpty(s)) return s;    // if empty string ("")
             // else
             return s.Substring(0, 1).ToUpper() + s.Substring(1).ToLower();
         }
@@ -22,8 +24,13 @@ namespace JabbaCustomExtensions
         /// <summary>
         /// Reverse a string (like Python's s[::-1]).
         /// </summary>
-        public static string ReverseStr(this string s) =>
-            string.Concat(s.Reverse());
+        public static string ReverseStr(this string s)
+        {
+            if (s == null) throw new ArgumentNullException(nameof (s));
+            // else
+            return string.Concat(s.Reverse());
+        }
+
 
         /// <summary>
         /// Get the string slice between the two indexes (like Python).
@@ -31,6 +38,9 @@ namespace JabbaCustomExtensions
         /// </summary>
         public static string Slice(this string s, int start, int end)
         {
+            if (s == null) throw new ArgumentNullException(nameof (s));
+            // else
+
             // based on https://www.dotnetperls.com/string-slice
             if (start < 0)    // support negative indexing
             {
@@ -48,12 +58,12 @@ namespace JabbaCustomExtensions
             {
                 end = s.Length;
             }
-            var len = end - start;             // Calculate length
+            var len = end - start;             // calculate length
             if (len < 0)
             {
                 len = 0;
             }
-            return s.Substring(start, len);    // Return Substring of length
+            return s.Substring(start, len);    // return Substring of length
         }
 
         /// <summary>
@@ -82,8 +92,13 @@ namespace JabbaCustomExtensions
         /// Take the string n times and concatenate them together to a string.
         /// Like in Python: `"-" * 20`.
         /// </summary>
-        public static string Times(this string s, int n) =>
-            n < 0 ? string.Empty : string.Concat(Enumerable.Repeat(s, n));
+        public static string Times(this string s, int n)
+        {
+            if (s == null) throw new ArgumentNullException(nameof (s));
+            // else
+            return n < 0 ? string.Empty : string.Concat(Enumerable.Repeat(s, n));
+        }
+
 
         /// <summary>
         /// Center a string in a field of given width (like Python's str.center()).
@@ -95,6 +110,8 @@ namespace JabbaCustomExtensions
         /// <returns>The centered string.</returns>
         public static string Center(this string s, int width, char fillChar=' ')
         {
+            if (s == null) throw new ArgumentNullException(nameof (s));
+            // else
             if (s.Length >= width)
             {
                 return s;
@@ -111,15 +128,24 @@ namespace JabbaCustomExtensions
         /// <summary>
         /// Convert the string to int (like Kotlin).
         /// </summary>
-        public static int ToInt(this string s) => int.Parse(s);
+        public static int ToInt(this string s)
+        {
+            if (s == null) throw new ArgumentNullException(nameof (s));
+            // else
+            return  int.Parse(s);
+        }
 
         /// <summary>
         /// Split the string by whitespaces and remove the empty entries (like Python's s.split()).
         /// </summary>
         /// <param name="s"></param>
         /// <returns>An array of strings containing non-empty parts.</returns>
-        public static string[] SplitAndRemoveEmptyEntries(this string s) =>
-            s.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+        public static string[] SplitAndRemoveEmptyEntries(this string s)
+        {
+            if (s == null) throw new ArgumentNullException(nameof (s));
+            // else
+            return s.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+        }
 
     } // end class StringExtensions
 
