@@ -78,7 +78,7 @@ namespace JabbaCustomExtensions
         {
             if (step == 0)
             {
-                throw new ArgumentOutOfRangeException("slice step cannot be zero");
+                throw new ArgumentOutOfRangeException(nameof (step));
             }
             if (step < 0)
             {
