@@ -16,7 +16,7 @@ namespace JabbaCustomExtensions
         {
             if (s == null) throw new ArgumentNullException(nameof (s));    // if null
             // else
-            if (string.IsNullOrEmpty(s)) return s;    // if empty string ("")
+            if (s.Length == 0) return s;    // if empty string ("")
             // else
             return s.Substring(0, 1).ToUpper() + s.Substring(1).ToLower();
         }
