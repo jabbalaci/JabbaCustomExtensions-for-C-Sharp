@@ -39,7 +39,7 @@ namespace JabbaCustomExtensionsTest
             Assert.Equal(new List<char> { 'a', 'c', 'e', 'g' }, li1.Slice(0, li1.Count, 2));
             Assert.Equal(new List<char> { 'a', 'c', 'e' }, li1.Slice(0, 5, 2));
 
-            Assert.Throws<ArgumentException>(() => li1.Slice(0, 6, 0));
+            Assert.Throws<ArgumentOutOfRangeException>(() => li1.Slice(0, 6, 0));
             Assert.Throws<NotImplementedException>(() => li1.Slice(0, 6, -1));
             Assert.Throws<NotImplementedException>(() => li1.Slice(0, 6, -2));
         }

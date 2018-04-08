@@ -70,7 +70,7 @@ namespace JabbaCustomExtensionsTest
             Assert.Equal("pto rgamn", s1.Slice(0, s1.Length, 2));
             Assert.Equal("pto", s1.Slice(0, 6, 2));
 
-            Assert.Throws<ArgumentException>(() => s1.Slice(0, 6, 0));
+            Assert.Throws<ArgumentOutOfRangeException>(() => s1.Slice(0, 6, 0));
             Assert.Throws<NotImplementedException>(() => s1.Slice(0, 6, -1));
             Assert.Throws<NotImplementedException>(() => s1.Slice(0, 6, -2));
         }

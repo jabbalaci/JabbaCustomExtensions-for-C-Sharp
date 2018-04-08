@@ -23,7 +23,7 @@ namespace JabbaCustomExtensions
         /// Reverse a string (like Python's s[::-1]).
         /// </summary>
         public static string ReverseStr(this string s) =>
-            new string(s.Reverse().ToArray());    // requires Linq
+            string.Concat(s.Reverse());
 
         /// <summary>
         /// Get the string slice between the two indexes (like Python).
@@ -68,7 +68,7 @@ namespace JabbaCustomExtensions
         {
             if (step == 0)
             {
-                throw new ArgumentException("slice step cannot be zero");
+                throw new ArgumentOutOfRangeException("slice step cannot be zero");
             }
             if (step < 0)
             {
