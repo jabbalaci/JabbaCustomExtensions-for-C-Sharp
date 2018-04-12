@@ -144,6 +144,16 @@ csi> Py.Zip(numbers, words, chars);
 [(1, "one", 'a'), (2, "two", 'b'), (3, "three", 'c')]    // an iterator over these tuples
 ```
 
+Sorting
+
+```cs
+csi> var numbers = new List<int> { 4, 2, 3, 1 };
+csi> Py.Sorted(numbers);    // returns a sorted copy
+{ 1, 2, 3, 4}
+csi> numbers
+{ 4, 2, 3, 1 }    // the original list is not changed
+```
+
 ----------
 
 The list is not complete. See also the [sources](JabbaCustomExtensions) and the [tests](JabbaCustomExtensionsTest).

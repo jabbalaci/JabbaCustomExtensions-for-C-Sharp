@@ -54,6 +54,20 @@ namespace JabbaCustomExtensionsTest
             Assert.Equal(expected, got);
         }
 
+        [Fact]
+        public void Py_Sorted()
+        {
+            var numbers = new[] {8, 3, 5, 1};
+            Assert.Equal(new[] {1, 3, 5, 8}, Py.Sorted(numbers));
+            Assert.Equal(new[] {8, 3, 5, 1}, numbers);
+            Assert.Equal(new List<int>().GetType(), Py.Sorted(numbers).GetType());
+
+            var words = new[] {"cc", "aa", "dd", "bb"};
+            Assert.Equal(new[] {"aa", "bb", "cc", "dd"}, Py.Sorted(words));
+            Assert.Equal(new[] {"cc", "aa", "dd", "bb"}, words);
+            Assert.Equal(new List<string>().GetType(), Py.Sorted(words).GetType());
+        }
+
     } // end class PyTest
 
 }

@@ -68,6 +68,16 @@ namespace JabbaCustomExtensions
                 .Zip(third, (t, c) => Tuple.Create(t.Item1, t.Item2, c));
         }
 
+        /// <summary>
+        /// Sort an enumerable object (input) in ascending order.
+        /// The input is not changed. The return value is a list.
+        /// </summary>
+        /// <param name="input">What you want to sort.</param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>Return a new list containing all items from the enumerable in ascending order.</returns>
+        public static List<T> Sorted<T>(IEnumerable<T> input) =>
+            input.OrderBy(x => x).ToList();
+
     } // end class Py
 
 }
