@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace JabbaCustomExtensions
@@ -48,6 +49,16 @@ namespace JabbaCustomExtensions
 
             return sb.Append("]").ToString();
         }
+
+        /// <summary>
+        /// Emulate Python's enumerate(seq).
+        /// </summary>
+        /// <param name="self"></param>
+        /// <param name="start">Start value of the index. Default value: 0.</param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>Iterator for index, value of enumerable.</returns>
+        public static IEnumerable<(int index, T item)> WithIndex<T>(this IEnumerable<T> self, int start=0)
+            => self.Select((item, index) => (index + start, item));
 
     } // end class EnumerableExtensions
 

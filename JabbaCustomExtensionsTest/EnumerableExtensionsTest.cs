@@ -39,6 +39,18 @@ namespace JabbaCustomExtensionsTest
             Assert.Equal("[10, 11]", Enumerable.Range(10, 2).Pretty());
         }
 
+        [Fact]
+        public void WithIndex()
+        {
+            var words = new List<string>() {"aa", "bb", "cc"};
+            var wordsExpected = new List<(int, string)> { (0, "aa"), (1, "bb"), (2, "cc") };
+            Assert.Equal(wordsExpected, words.WithIndex().ToList());
+
+            var numbers = new List<int>() {24, 25, 26};
+            var numbersExpected = new List<(int, int)> { (1, 24), (2, 25), (3, 26) };
+            Assert.Equal(numbersExpected, numbers.WithIndex(start: 1).ToList());
+        }
+
     } // end class EnumerableExtensionsTest
 
 }
