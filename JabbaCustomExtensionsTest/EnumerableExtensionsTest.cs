@@ -13,6 +13,7 @@ namespace JabbaCustomExtensionsTest
         [Fact]
         public void Pretty()
         {
+            // ReSharper disable once CollectionNeverUpdated.Local
             var seq1 = new List<int>();
             Assert.Equal("[]", seq1.Pretty());
 

@@ -71,6 +71,7 @@ namespace JabbaCustomExtensions
         /// every step-th character (like Python).
         /// Inclusive for start index, exclusive for end index.
         /// </summary>
+        /// <param name="input"></param>
         /// <param name="start">Start position (inclusive).</param>
         /// <param name="end">End position (exclusive).</param>
         /// <param name="step">Keep every step-th character (and skip the others).</param>

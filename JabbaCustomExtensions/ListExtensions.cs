@@ -45,6 +45,7 @@ namespace JabbaCustomExtensions
         /// every step-th character (like Python).
         /// Inclusive for start index, exclusive for end index.
         /// </summary>
+        /// <param name="input"></param>
         /// <param name="start">Start position (inclusive).</param>
         /// <param name="end">End position (exclusive).</param>
         /// <param name="step">Keep every step-th element (and skip the others).</param>
@@ -53,7 +54,7 @@ namespace JabbaCustomExtensions
         {
             if (step == 0)
             {
-                throw new ArgumentOutOfRangeException("slice step cannot be zero");
+                throw new ArgumentOutOfRangeException(nameof(step));
             }
             if (step < 0)
             {
