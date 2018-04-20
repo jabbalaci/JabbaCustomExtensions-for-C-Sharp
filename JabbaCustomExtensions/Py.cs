@@ -46,11 +46,11 @@ namespace JabbaCustomExtensions
         /// <returns>An iterator that aggregates elements from the two parameters.
         /// The elements are grouped in tuples.
         /// </returns>
-        public static IEnumerable<Tuple<TFirst, TSecond>> Zip<TFirst, TSecond>(
+        public static IEnumerable<(TFirst, TSecond)> Zip<TFirst, TSecond>(
             IEnumerable<TFirst> first,
             IEnumerable<TSecond> second)
         {
-             return first.Zip(second, Tuple.Create);
+            return first.Zip(second, (a, b) => (a, b));
         }
 
         /// <summary>
@@ -59,13 +59,13 @@ namespace JabbaCustomExtensions
         /// <returns>An iterator that aggregates elements from the three parameters.
         /// The elements are grouped in tuples.
         /// </returns>
-        public static IEnumerable<Tuple<TFirst, TSecond, TThird>> Zip<TFirst, TSecond, TThird>(
+        public static IEnumerable<(TFirst, TSecond, TThird)> Zip<TFirst, TSecond, TThird>(
             IEnumerable<TFirst> first,
             IEnumerable<TSecond> second,
             IEnumerable<TThird> third)
         {
             return first.Zip(second, (a, b) => (a, b))
-                .Zip(third, (t, c) => Tuple.Create(t.Item1, t.Item2, c));
+                .Zip(third, (t, c) => (t.Item1, t.Item2, c));
         }
 
         /// <summary>

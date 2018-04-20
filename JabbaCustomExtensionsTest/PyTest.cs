@@ -34,7 +34,7 @@ namespace JabbaCustomExtensionsTest
         {
             int[] numbers = { 1, 2, 3, 4 };
             string[] words = { "one", "two", "three" };
-            Assert.Equal(numbers.Zip(words, Tuple.Create), Py.Zip(numbers, words));
+            Assert.Equal(numbers.Zip(words, (a, b) => (a, b)), Py.Zip(numbers, words));
         }
 
         [Fact]
@@ -45,11 +45,11 @@ namespace JabbaCustomExtensionsTest
             char[] chars = { 'a', 'b', 'c', 'd', 'e', 'f' };
 
             var got = Py.Zip(numbers, words, chars).ToList();
-            var expected = new List<Tuple<int, string, char>>
+            var expected = new List<(int, string, char)>
             {
-                Tuple.Create(1, "one", 'a'),
-                Tuple.Create(2, "two", 'b'),
-                Tuple.Create(3, "three", 'c')
+                (1, "one", 'a'),
+                (2, "two", 'b'),
+                (3, "three", 'c')
             };
             Assert.Equal(expected, got);
         }
