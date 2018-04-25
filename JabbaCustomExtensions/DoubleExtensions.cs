@@ -14,6 +14,6 @@ namespace JabbaCustomExtensions
         public static int ToInt(this double d) =>
             Convert.ToInt32(d);
 
-    } // end class CharExtensions
+    } // end class DoubleExtensions
 
 }

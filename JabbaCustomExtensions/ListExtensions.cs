@@ -9,6 +9,8 @@ namespace JabbaCustomExtensions
     /// </summary>
     public static class ListExtensions
     {
+        private static Random rng = new Random();
+
         /// <summary>
         /// Get the list slice between the two indexes (like Python).
         /// Inclusive for start index, exclusive for end index.
@@ -62,6 +64,25 @@ namespace JabbaCustomExtensions
             }
             var li = Slice(input, start, end);
             return li.Where((c, i) => i % step == 0).ToList();
+        }
+
+        /// <summary>
+        /// Shuffle a list in place, i.e. randomize the order of the elements.
+        /// We use the Fisher-Yates shuffle algorithm.
+        /// </summary>
+        /// <param name="li">The list to be shuffled.</param>
+        /// <typeparam name="T"></typeparam>
+        public static void Shuffle<T>(this IList<T> li)
+        {
+            var n = li.Count;
+            while (n > 1)
+            {
+                --n;
+                var k = rng.Next(n + 1);
+                var tmp = li[k];
+                li[k] = li[n];
+                li[n] = tmp;
+            }
         }
 
     } // end class ListExtensions
