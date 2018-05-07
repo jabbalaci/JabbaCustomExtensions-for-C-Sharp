@@ -78,6 +78,47 @@ namespace JabbaCustomExtensions
         public static List<T> Sorted<T>(IEnumerable<T> input) =>
             input.OrderBy(x => x).ToList();
 
+        /// <summary>
+        /// Convert a decimal number to classic bases (2, 8, 10 and 16).
+        /// </summary>
+        /// <param name="number">A decimal number.</param>
+        /// <param name="toBase">A classic base (2, 8, 10 or 16).</param>
+        /// <returns></returns>
+        private static string ConvertDecimalToBase(int number, int toBase)
+        {
+            if (number >= 0)
+            {
+                return Convert.ToString(number, toBase);
+            }
+            // else
+            number = Math.Abs(number);
+            return "-" + Convert.ToString(number, toBase);
+        }
+
+        /// <summary>
+        /// Convert decimal number (int) to binary (string).
+        /// </summary>
+        /// <param name="number">A decimal number.</param>
+        /// <returns>Binary version of the decimal number.</returns>
+        public static string Bin(int number) =>
+            ConvertDecimalToBase(number, 2);
+
+        /// <summary>
+        /// Convert decimal number (int) to octal (string).
+        /// </summary>
+        /// <param name="number">A decimal number.</param>
+        /// <returns>Octal version of the decimal number.</returns>
+        public static string Oct(int number) =>
+            ConvertDecimalToBase(number, 8);
+
+        /// <summary>
+        /// Convert decimal number (int) to hexadecimal (string).
+        /// </summary>
+        /// <param name="number">A decimal number.</param>
+        /// <returns>Hexadecimal version of the decimal number.</returns>
+        public static string Hex(int number) =>
+            ConvertDecimalToBase(number, 16);
+
     } // end class Py
 
 }

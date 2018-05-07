@@ -67,6 +67,30 @@ namespace JabbaCustomExtensionsTest
             Assert.Equal(new List<string>().GetType(), Py.Sorted(words).GetType());
         }
 
+        [Fact]
+        public void Py_Bin()
+        {
+            Assert.Equal("0", Py.Bin(0));
+            Assert.Equal("11110111001", Py.Bin(1977));
+            Assert.Equal("-11110111001", Py.Bin(-1977));
+        }
+
+        [Fact]
+        public void Py_Oct()
+        {
+            Assert.Equal("0", Py.Oct(0));
+            Assert.Equal("3671", Py.Oct(1977));
+            Assert.Equal("-3671", Py.Oct(-1977));
+        }
+
+        [Fact]
+        public void Py_Hex()
+        {
+            Assert.Equal("0", Py.Hex(0));
+            Assert.Equal("7b9", Py.Hex(1977));
+            Assert.Equal("-7b9", Py.Hex(-1977));
+        }
+
     } // end class PyTest
 
 }
