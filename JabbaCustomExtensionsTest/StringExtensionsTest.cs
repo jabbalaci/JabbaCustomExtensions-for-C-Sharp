@@ -33,6 +33,8 @@ namespace JabbaCustomExtensionsTest
             Assert.Equal("aa", "aa".ReverseStr());
             Assert.Equal("ba", "ab".ReverseStr());
             Assert.Equal("dcba", "abcd".ReverseStr());
+            Assert.Equal("ólzsáL", "László".ReverseStr());
+            Assert.Equal("b→a", "a→b".ReverseStr());
         }
 
         [Fact]

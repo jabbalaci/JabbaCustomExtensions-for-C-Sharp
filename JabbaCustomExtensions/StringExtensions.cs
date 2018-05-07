@@ -28,9 +28,11 @@ namespace JabbaCustomExtensions
         {
             if (s == null) throw new ArgumentNullException(nameof (s));
             // else
-            return string.Concat(s.Reverse());
+//            return string.Concat(s.Reverse());    // very slow
+            var charArray = s.ToCharArray();    // much faster
+            Array.Reverse(charArray);
+            return new string(charArray);
         }
-
 
         /// <summary>
         /// Get the string slice between the two indexes (like Python).
