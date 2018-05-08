@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JabbaCustomExtensions", "Ja
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JabbaCustomExtensionsTest", "JabbaCustomExtensionsTest\JabbaCustomExtensionsTest.csproj", "{F335413D-20C1-4F8B-B292-6957CDF312AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JabbaCustomExtensionsTimeIt", "JabbaCustomExtensionsTimeIt\JabbaCustomExtensionsTimeIt.csproj", "{6634E4FC-E099-4B89-BB20-49544D88980F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{F335413D-20C1-4F8B-B292-6957CDF312AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F335413D-20C1-4F8B-B292-6957CDF312AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F335413D-20C1-4F8B-B292-6957CDF312AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6634E4FC-E099-4B89-BB20-49544D88980F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6634E4FC-E099-4B89-BB20-49544D88980F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6634E4FC-E099-4B89-BB20-49544D88980F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6634E4FC-E099-4B89-BB20-49544D88980F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
