@@ -133,6 +133,36 @@ namespace JabbaCustomExtensionsTest
         }
 
         [Fact]
+        public void ToFloat()
+        {
+            string nullStr = null;
+            Assert.Throws<ArgumentNullException>(() => nullStr.ToFloat());
+
+            Assert.Equal(0.1f, "0.1".ToFloat());
+            Assert.Equal(-1.1f, "-1.1".ToFloat());
+            Assert.Equal(42.1f, "42.1".ToFloat());
+            Assert.Equal(42.1f, "42.1\n".ToFloat());
+            Assert.Equal(42.1f, "    42.1".ToFloat());
+            Assert.Equal(42.1f, "42.1    ".ToFloat());
+            Assert.Equal(42.1f, "    42.1    ".ToFloat());
+        }
+
+        [Fact]
+        public void ToDouble()
+        {
+            string nullStr = null;
+            Assert.Throws<ArgumentNullException>(() => nullStr.ToDouble());
+
+            Assert.Equal(0.1, "0.1".ToDouble());
+            Assert.Equal(-1.1, "-1.1".ToDouble());
+            Assert.Equal(42.1, "42.1".ToDouble());
+            Assert.Equal(42.1, "42.1\n".ToDouble());
+            Assert.Equal(42.1, "    42.1".ToDouble());
+            Assert.Equal(42.1, "42.1    ".ToDouble());
+            Assert.Equal(42.1, "    42.1    ".ToDouble());
+        }
+
+        [Fact]
         public void SplitAndRemoveEmptyEntries()
         {
             string nullStr = null;

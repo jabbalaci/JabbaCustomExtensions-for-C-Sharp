@@ -139,6 +139,26 @@ namespace JabbaCustomExtensions
         }
 
         /// <summary>
+        /// Convert the string to float (like Kotlin).
+        /// </summary>
+        public static float ToFloat(this string s)
+        {
+            if (s == null) throw new ArgumentNullException(nameof (s));
+            // else
+            return  float.Parse(s);
+        }
+
+        /// <summary>
+        /// Convert the string to double (like Kotlin).
+        /// </summary>
+        public static double ToDouble(this string s)
+        {
+            if (s == null) throw new ArgumentNullException(nameof (s));
+            // else
+            return  double.Parse(s);
+        }
+
+        /// <summary>
         /// Split the string by whitespaces and remove the empty entries (like Python's s.split()).
         /// </summary>
         /// <param name="s"></param>
