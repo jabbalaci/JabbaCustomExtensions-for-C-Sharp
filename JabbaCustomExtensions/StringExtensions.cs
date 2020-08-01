@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 
 namespace JabbaCustomExtensions
@@ -145,7 +146,7 @@ namespace JabbaCustomExtensions
         {
             if (s == null) throw new ArgumentNullException(nameof (s));
             // else
-            return  float.Parse(s);
+            return  float.Parse(s, CultureInfo.InvariantCulture);
         }
 
         /// <summary>
@@ -155,7 +156,7 @@ namespace JabbaCustomExtensions
         {
             if (s == null) throw new ArgumentNullException(nameof (s));
             // else
-            return  double.Parse(s);
+            return  double.Parse(s, CultureInfo.InvariantCulture);
         }
 
         /// <summary>
